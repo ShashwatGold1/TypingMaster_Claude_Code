@@ -1,0 +1,33 @@
+{
+  "name": "typing-master-claude-code",
+  "version": "1.0.0",
+  "description": "A comprehensive typing master desktop application with progressive lessons and visual feedback",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "dist": "electron-builder --publish=never"
+  },
+  "keywords": ["typing", "learning", "electron", "desktop"],
+  "author": "ShashwatGold1",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^25.3.1",
+    "electron-builder": "^24.6.3"
+  },
+  "build": {
+    "appId": "com.shashwat.typingmaster",
+    "productName": "Typing Master",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    }
+  }
+}

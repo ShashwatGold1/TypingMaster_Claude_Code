@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Master</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Title Bar -->
+    <div class="title-bar">
+        <div class="title-bar-left">
+            <img src="assets/icon.svg" alt="Typing Master" class="app-icon">
+            <span class="app-title">Typing Master</span>
+        </div>
+        <div class="title-bar-controls">
+            <button class="title-btn minimize-btn" id="minimizeBtn">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect x="2" y="5" width="8" height="2"/>
+                </svg>
+            </button>
+            <button class="title-btn maximize-btn" id="maximizeBtn">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <rect x="2" y="2" width="8" height="8" fill="none" stroke="currentColor" stroke-width="1"/>
+                </svg>
+            </button>
+            <button class="title-btn close-btn" id="closeBtn">
+                <svg width="12" height="12" viewBox="0 0 12 12">
+                    <path d="M2 2L10 10M10 2L2 10" stroke="currentColor" stroke-width="1"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h3>LEARN</h3>
+                <div class="sidebar-item active" data-page="quick-test">
+                    <span class="icon">⚡</span>
+                    <span>Quick Test</span>
+                </div>
+                <div class="sidebar-item" data-page="lessons">
+                    <span class="icon">📚</span>
+                    <span>Lessons</span>
+                </div>
+                <div class="sidebar-item" data-page="games">
+                    <span class="icon">🎮</span>
+                    <span>Games</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>TRACK</h3>
+                <div class="sidebar-item" data-page="statistics">
+                    <span class="icon">📊</span>
+                    <span>Statistics</span>
+                </div>
+                <div class="sidebar-item" data-page="progress">
+                    <span class="icon">📈</span>
+                    <span>Progress</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>CUSTOMIZE</h3>
+                <div class="sidebar-item" data-page="settings">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </div>
+                <div class="sidebar-item" data-page="profile">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Quick Test Page -->
+            <div class="page active" id="quick-test-page">
+                <h1>Quick Typing Test</h1>
+                <p class="page-subtitle">Test your typing speed and accuracy with random text</p>
+                
+                <!-- Stats Display -->
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-value" id="wpm">0</div>
+                        <div class="stat-label">WPM</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="accuracy">100%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="time">0</div>
+                        <div class="stat-label">Time</div>
+                    </div>
+                </div>
+
+                <!-- Typing Area -->
+                <div class="typing-container">
+                    <div class="text-display" id="textDisplay">
+                        Cooking is both an art and a science. It involves understanding ingredients, mastering techniques, and creating delicious meals that nourish the body and bring joy to those who share them.
+                    </div>
+                    <textarea class="typing-input" id="typingInput" placeholder="Start typing here..."></textarea>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="btn btn-secondary" id="resetBtn">Reset</button>
+                    <select class="time-select" id="timeSelect">
+                        <option value="30">30 seconds</option>
+                        <option value="60">60 seconds</option>
+                        <option value="120">2 minutes</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Lessons Page -->
+            <div class="page" id="lessons-page">
+                <h1>Typing Lessons</h1>
+                <p class="page-subtitle">Learn to type with structured lessons</p>
+                
+                <div class="lessons-grid">
+                    <div class="lesson-card beginner" data-lesson="home-row">
+                        <div class="lesson-header">
+                            <span class="lesson-icon">🏠</span>
+                            <div class="lesson-difficulty">BEGINNER</div>
+                        </div>
+                        <h3>Home Row Basics</h3>
+                        <p>Learn the foundation keys: A, S, D, F, J, K, L, ;</p>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">
+                                <span>Target WPM:</span>
+                                <span>15</span>
+                            </div>
+                            <div class="lesson-stat">
+                                <span>Target Accuracy:</span>
+                                <span>90%</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary lesson-btn">Start Lesson</button>
+                    </div>
+
+                    <div class="lesson-card beginner locked" data-lesson="top-row">
+                        <div class="lesson-header">
+                            <span class="lesson-icon">⬆️</span>
+                            <div class="lesson-difficulty">BEGINNER</div>
+                        </div>
+                        <h3>Top Row Introduction</h3>
+                        <p>Add the top row keys: Q, W, E, R, T, Y, U, I, O, P</p>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">
+                                <span>Target WPM:</span>
+                                <span>20</span>
+                            </div>
+                            <div class="lesson-stat">
+                                <span>Target Accuracy:</span>
+                                <span>85%</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary lesson-btn">Locked</button>
+                    </div>
+
+                    <div class="lesson-card beginner locked" data-lesson="bottom-row">
+                        <div class="lesson-header">
+                            <span class="lesson-icon">⬇️</span>
+                            <div class="lesson-difficulty">BEGINNER</div>
+                        </div>
+                        <h3>Bottom Row Mastery</h3>
+                        <p>Complete the alphabet with: Z, X, C, V, B, N, M</p>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">
+                                <span>Target WPM:</span>
+                                <span>20</span>
+                            </div>
+                            <div class="lesson-stat">
+                                <span>Target Accuracy:</span>
+                                <span>85%</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary lesson-btn">Locked</button>
+                    </div>
+
+                    <div class="lesson-card beginner locked" data-lesson="capitals">
+                        <div class="lesson-header">
+                            <span class="lesson-icon">🔤</span>
+                            <div class="lesson-difficulty">BEGINNER</div>
+                        </div>
+                        <h3>Capital Letters</h3>
+                        <p>Learn to use the Shift key for capital letters</p>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">
+                                <span>Target WPM:</span>
+                                <span>25</span>
+                            </div>
+                            <div class="lesson-stat">
+                                <span>Target Accuracy:</span>
+                                <span>90%</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary lesson-btn">Locked</button>
+                    </div>
+
+                    <div class="lesson-card beginner locked" data-lesson="punctuation">
+                        <div class="lesson-header">
+                            <span class="lesson-icon">.,;</span>
+                            <div class="lesson-difficulty">BEGINNER</div>
+                        </div>
+                        <h3>Common Punctuation</h3>
+                        <p>Master punctuation marks and special characters</p>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">
+                                <span>Target WPM:</span>
+                                <span>25</span>
+                            </div>
+                            <div class="lesson-stat">
+                                <span>Target Accuracy:</span>
+                                <span>90%</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary lesson-btn">Locked</button>
+                    </div>
+
+                    <div class="lesson-card intermediate locked" data-lesson="numbers">
+                        <div class="lesson-header">
+                            <span class="lesson-icon">🔢</span>
+                            <div class="lesson-difficulty">INTERMEDIATE</div>
+                        </div>
+                        <h3>Number Row</h3>
+                        <p>Learn to type numbers and symbols efficiently</p>
+                        <div class="lesson-stats">
+                            <div class="lesson-stat">
+                                <span>Target WPM:</span>
+                                <span>30</span>
+                            </div>
+                            <div class="lesson-stat">
+                                <span>Target Accuracy:</span>
+                                <span>90%</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary lesson-btn">Locked</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson Practice Page -->
+            <div class="page" id="lesson-practice-page">
+                <div class="lesson-header-bar">
+                    <button class="btn btn-secondary" id="backToLessons">← Back to Lessons</button>
+                    <h2 id="lessonTitle">Home Row Basics</h2>
+                    <div class="lesson-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="lessonProgress"></div>
+                        </div>
+                        <span id="progressText">Step 1 of 5</span>
+                    </div>
+                </div>
+
+                <!-- Finger Positioning Guide -->
+                <div class="finger-guide">
+                    <h3>Finger Positioning</h3>
+                    <div class="hands-display">
+                        <div class="hand left-hand">
+                            <div class="finger" data-finger="left-pinky">Left Pinky</div>
+                            <div class="finger" data-finger="left-ring">Left Ring</div>
+                            <div class="finger" data-finger="left-middle">Left Middle</div>
+                            <div class="finger" data-finger="left-index">Left Index</div>
+                        </div>
+                        <div class="hand right-hand">
+                            <div class="finger" data-finger="right-index">Right Index</div>
+                            <div class="finger" data-finger="right-middle">Right Middle</div>
+                            <div class="finger" data-finger="right-ring">Right Ring</div>
+                            <div class="finger" data-finger="right-pinky">Right Pinky</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Virtual Keyboard -->
+                <div class="virtual-keyboard" id="virtualKeyboard">
+                    <!-- Keyboard will be generated by JavaScript -->
+                </div>
+
+                <!-- Lesson Content -->
+                <div class="lesson-content">
+                    <div class="lesson-instruction" id="lessonInstruction">
+                        Place your fingers on the home row keys: A, S, D, F for left hand and J, K, L, ; for right hand.
+                    </div>
+                    
+                    <div class="typing-area">
+                        <div class="lesson-text" id="lessonText">asdf jkl;</div>
+                        <input type="text" class="lesson-input" id="lessonInput" placeholder="Type the characters above...">
+                    </div>
+
+                    <div class="lesson-stats">
+                        <div class="stat">
+                            <span class="stat-label">WPM:</span>
+                            <span class="stat-value" id="lessonWPM">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Accuracy:</span>
+                            <span class="stat-value" id="lessonAccuracy">100%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Errors:</span>
+                            <span class="stat-value" id="lessonErrors">0</span>
+                        </div>
+                    </div>
+
+                    <div class="lesson-controls">
+                        <button class="btn btn-secondary" id="prevStep">Previous</button>
+                        <button class="btn btn-primary" id="nextStep">Next Step</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Games Page -->
+            <div class="page" id="games-page">
+                <h1>Typing Games</h1>
+                <p class="page-subtitle">Fun games to improve your typing skills</p>
+                <div class="games-grid">
+                    <div class="game-card">
+                        <h3>🎯 Word Shooter</h3>
+                        <p>Type words to shoot them down before they reach the bottom</p>
+                        <button class="btn btn-primary">Play Game</button>
+                    </div>
+                    <div class="game-card">
+                        <h3>🏃 Type Race</h3>
+                        <p>Race against time and compete with your best scores</p>
+                        <button class="btn btn-primary">Play Game</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Page -->
+            <div class="page" id="statistics-page">
+                <h1>Statistics</h1>
+                <p class="page-subtitle">Track your typing performance over time</p>
+                
+                <div class="stats-overview">
+                    <div class="overview-card">
+                        <h3>Best WPM</h3>
+                        <div class="big-stat">42</div>
+                    </div>
+                    <div class="overview-card">
+                        <h3>Average Accuracy</h3>
+                        <div class="big-stat">94%</div>
+                    </div>
+                    <div class="overview-card">
+                        <h3>Total Time Practiced</h3>
+                        <div class="big-stat">12h 30m</div>
+                    </div>
+                    <div class="overview-card">
+                        <h3>Lessons Completed</h3>
+                        <div class="big-stat">3/12</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Page -->
+            <div class="page" id="progress-page">
+                <h1>Progress</h1>
+                <p class="page-subtitle">See how you're improving over time</p>
+                
+                <div class="progress-overview">
+                    <div class="progress-item">
+                        <h3>Home Row Mastery</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
+                        <span>80% Complete</span>
+                    </div>
+                    <div class="progress-item">
+                        <h3>Top Row Learning</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                        <span>20% Complete</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="page" id="settings-page">
+                <h1>Settings</h1>
+                <p class="page-subtitle">Customize your typing experience</p>
+                
+                <div class="settings-group">
+                    <h3>Display</h3>
+                    <div class="setting-item">
+                        <label>Theme</label>
+                        <select>
+                            <option>Light</option>
+                            <option>Dark</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>Font Size</label>
+                        <select>
+                            <option>Small</option>
+                            <option>Medium</option>
+                            <option>Large</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <h3>Sound</h3>
+                    <div class="setting-item">
+                        <label>Keystroke Sounds</label>
+                        <input type="checkbox" checked>
+                    </div>
+                    <div class="setting-item">
+                        <label>Error Sounds</label>
+                        <input type="checkbox" checked>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Page -->
+            <div class="page" id="profile-page">
+                <h1>Profile</h1>
+                <p class="page-subtitle">Manage your typing profile</p>
+                
+                <div class="profile-info">
+                    <div class="profile-avatar">👤</div>
+                    <div class="profile-details">
+                        <h3>Typing Enthusiast</h3>
+                        <p>Member since: Today</p>
+                        <p>Current Level: Beginner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
